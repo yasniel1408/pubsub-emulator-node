@@ -12,6 +12,7 @@ const pubsub = new PubSub({
 const subscription = pubsub.subscription("my-subscription");
 subscription.on("message", (message) => {
   console.log(`Nuevo mensaje: ${message.data}`);
+  message.ack();
 });
 
 app.get("/", (req, res) => {
