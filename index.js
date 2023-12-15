@@ -1,5 +1,5 @@
-import express from "express";
-import { PubSub } from "@google-cloud/pubsub";
+const express = require("express");
+const { PubSub } = require("@google-cloud/pubsub");
 
 const app = express();
 const port = 8000;
@@ -16,9 +16,11 @@ subscription.on("message", (message) => {
 });
 
 app.get("/", (req, res) => {
-  res.send("Servidor en ejecución");
+  res.status(200).send("Servidor en ejecución");
 });
 
 app.listen(port, () => {
   console.log(`Servidor en ejecución en http://localhost:${port}`);
 });
+
+export default app;
