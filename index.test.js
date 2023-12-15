@@ -12,8 +12,9 @@ describe("Pub/Sub Emulator", () => {
     // Crear una promesa para manejar la recepción del mensaje
     const messagePromise = new Promise((resolve) => {
       subscription.on("message", (message) => {
-        resolve(message.data.toString());
+        console.log(`Received message ${message.data.toString()}:`);
         message.ack();
+        resolve(message.data.toString());
       });
     });
 
