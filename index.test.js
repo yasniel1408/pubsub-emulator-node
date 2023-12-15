@@ -1,5 +1,4 @@
 const { PubSub } = require("@google-cloud/pubsub");
-const { expect } = require("jest");
 
 const pubsub = new PubSub({
   projectId: "localhost",
@@ -14,6 +13,7 @@ describe("Pub/Sub Emulator", () => {
     const messagePromise = new Promise((resolve) => {
       subscription.on("message", (message) => {
         resolve(message.data.toString());
+        message.ack();
       });
     });
 
